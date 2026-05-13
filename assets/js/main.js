@@ -70,6 +70,15 @@
 			catch (error) {}
 		});
 
+	// Flip cards.
+		$('.flip-card-toggle').on('click', function() {
+			var $card = $(this).closest('.flip-card'),
+				isFlipped = !$card.hasClass('is-flipped');
+
+			$card.toggleClass('is-flipped', isFlipped);
+			$card.find('.flip-card-toggle').attr('aria-pressed', isFlipped);
+		});
+
 	// Play initial animations on page load.
 		$window.on('load', function() {
 			window.setTimeout(function() {

@@ -2859,6 +2859,168 @@ input, select, textarea {
 
 		}
 
+	.flip-cards {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(16em, 1fr));
+		gap: 2em;
+		width: 100%;
+		margin: 0 0 3em 0;
+	}
+
+		.flip-cards .flip-card {
+			width: auto;
+			height: 23em;
+			min-height: 23em;
+			margin: 0;
+			perspective: 60em;
+		}
+
+			.flip-cards .flip-card:nth-child(n) {
+				margin-top: 0;
+				margin-left: 0;
+			}
+
+		.flip-card-inner {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			-webkit-transition: -webkit-transform 0.55s ease;
+			transition: transform 0.55s ease;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+		}
+
+			.flip-card.is-flipped .flip-card-inner {
+				-webkit-transform: rotateY(180deg);
+				transform: rotateY(180deg);
+			}
+
+		.flip-card-face {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			padding: 2em;
+			border: solid 1px #dddddd;
+			border-radius: 8px;
+			background: #ffffff;
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+			box-shadow: 0 0.75em 2em rgba(0, 0, 0, 0.06);
+		}
+
+		.flip-card-front {
+			display: grid;
+			grid-template-rows: 1fr auto;
+			gap: 1.25em;
+			justify-items: center;
+			align-items: stretch;
+		}
+
+			.flip-card-face h3 {
+				margin: 0 0 1.25em 0;
+			}
+
+			.flip-card-face p {
+				margin: 0 0 1.5em 0;
+				font-size: 0.95em;
+				line-height: 1.55;
+			}
+
+		.flip-card-back {
+			-webkit-transform: rotateY(180deg);
+			transform: rotateY(180deg);
+		}
+
+		.flip-card-link {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: start;
+			align-self: center;
+			border-bottom: 0;
+			color: inherit;
+		}
+
+			.flip-card-link h3 {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 3em;
+				margin-bottom: 0;
+			}
+
+			.flip-card-link:hover h3 {
+				color: #efa8b0;
+			}
+
+		.flip-card-logo {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 11em;
+			height: 11em;
+			margin: 0 0 1.5em 0;
+			flex: 0 0 auto;
+			border: solid 1px #dddddd;
+			border-radius: 100%;
+			overflow: hidden;
+			background: #ffffff;
+		}
+
+			.flip-card-logo.logo-inset-border:after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border: solid 0.32em #ffffff;
+				border-radius: 100%;
+				box-sizing: border-box;
+				box-shadow: inset 0 0 0 0.12em #ffffff;
+				pointer-events: none;
+			}
+
+			.flip-card-logo img {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transform: scale(0.9);
+			}
+
+			.flip-card-logo img.logo-zoomed {
+				display: block;
+				width: 121%;
+				height: 121%;	
+				object-fit: cover;
+				transform: scale(0.9);
+			}
+
+		.flip-card-toggle {
+			align-self: center;
+			margin-top: auto;
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.flip-cards {
+				grid-template-columns: 1fr;
+				gap: 1.5em;
+			}
+
+				.flip-cards .flip-card,
+				.flip-card-inner {
+					height: 24em;
+					min-height: 24em;
+				}
+
+		}
+
 /* Statistics */
 
 	.statistics {
